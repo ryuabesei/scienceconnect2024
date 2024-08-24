@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブース展示 - サイエンスコネクト2024</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        .booth-card {
+            border-width: 3px;
+            border-style: solid;
+        }
+        .category-science { border-color: #FFD700; }
+        .category-research { border-color: #4169E1; }
+        .category-tech-society { border-color: #2E8B57; }
+        .category-tech-society-company { border-color: #FF6347; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">ホーム</a></li>
+                <li><a href="index.html#about" class="nav-link">概要</a></li>
+                <li><a href="index.html#highlights" class="nav-link">ハイライト</a></li>
+                <li><a href="index.html#schedule" class="nav-link">スケジュール</a></li>
+                <li><a href="index.html#contact" class="nav-link">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="booths">
+            <div class="content-wrapper">
+                <h1>ブース展示</h1>
+                <div id="booth-display"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 サイエンスコネクト2024 All Rights Reserved.</p>
+    </footer>
+
+    <script type="text/babel">
+    const BoothCard = ({ number, title, description, time, organization, category }) => {
+        return (
+            <div className={`booth-card category-${category}`}>
+                <div className="booth-number">ブース{number}</div>
+                <h2 className="booth-title">{title}</h2>
+                <p className="booth-description">{description}</p>
+                <div className="booth-footer">
+                    <span className="booth-time">{time}</span>
+                    <span className="booth-organization">{organization}</span>
+                </div>
+            </div>
+        );
+    };
+
+    const BoothDisplay = () => {
+        const boothData = [
+            {
+                category: 'science',
+                title: '科学の深め方',
+                booths: [
+                    {
+                        number: '①',
+                        title: 'サイエンスの視点から社会問題をみよう！',
+                        description: '科学の仮説の立て方を学び、合成生物学や遺伝子工学に関する社会問題を科学的視点で議論します。科学的思考の重要性を一緒に考えて深めましょう！！',
+                        time: '10-30分',
+                        organization: 'iGEM TOYAKU（東京薬科大学）',
+                    },
+                    {
+                        number: '②',
+                        title: '「科学のプロセス」をみてみよう',
+                        description: '「仮説検証型」科学のプロセスを史実の実験と身近な例でざっくりご紹介。実はあなたもいつも使っているかも？科学の進め方、知ってみませんか。',
+                        time: '15分',
+                        organization: 'iGEM Kyoto（京都大学）',
+                    },
+                    {
+                        number: '⑩',
+                        title: '楽しく合成生物学を学ぼう！！',
+                        description: '血栓予防のためのナットウキナーゼ生産に関する研究を紹介します。',
+                        time: '8-13分',
+                        organization: 'Grand Tokyo（高校生）',
+                    },
+                ]
+            },
+            {
+                category: 'research',
+                title: '研究内容',
+                booths: [
+                    {
+                        number: '③',
+                        title: 'タンパク質×AI!? 最先端の研究紹介！',
+                        description: 'からだの色々な機能を担うタンパク質、そして最近話題のAI技術。この合わせ技で出来ることとは！？最新技術を使って"タンパク質×AI"を体感しよう！',
+                        time: '20分',
+                        organization: 'TSUKUBA（筑波大学）',
+                    },
+                    {
+                        number: '⑥',
+                        title: '合成生物学を通した緑内障への挑戦！',
+                        description: '自覚症状がなく発見が遅れてしまいがちな緑内障。私たちは緑内障検査を家庭で行えるキットを合成生物学の力で作成します！最先端の研究紹介の他にも、合成生物学について簡単に理解できる「カードゲーム」も！？',
+                        time: '20分',
+                        organization: 'iGEM UTokyo (東京大学)',
+                    },
+                    {
+                        number: '⑦',
+                        title: 'IBDって何だろう？ 新たな診断薬研究',
+                        description: '難病指定されている炎症性腸疾患(IBD)の簡易でユニークな検査方法があります！「生物多様性」をテーマにした自作ボードゲームも遊んでみてください。',
+                        time: '20分',
+                        organization: 'BotchanLab-Tokyo（東京理科大学）',
+                    },
+                    {
+                        number: '⑪',
+                        title: '遺伝子で次世代エネルギーの研究？',
+                        description: '世界の最先端を見てみよう！実験器具について学ぶことができるカードゲームで遊ぶ体験。シアノバクテリアを使った発電について研究紹介！！',
+                        time: '10分',
+                        organization: 'ASIJ（高校生）',
+                    },
+                ]
+            },
+            {
+                category: 'tech-society',
+                title: '科学技術と社会のつながり',
+                booths: [
+                    {
+                        number: '④',
+                        title: '地雷を生物で探知する？！',
+                        description: '遺伝子組換え技術が社会課題にどう役立つのか、一緒に考えませんか？地雷探知等を例に技術の未来についてディスカッション！！',
+                        time: '20分',
+                        organization: 'iGEM Qdai（九州大学）',
+                    },
+                    {
+                        number: '⑤',
+                        title: '遺伝子組換え技術 × 食品',
+                        description: '遺伝子組換え技術と食品のつながりを紹介し、現在の技術で解決できる食品問題について考えよう。組換え食品に対する世間の印象やあなたの考えも教えて！',
+                        time: '10分',
+                        organization: 'iGEM Sci-net（岐阜,長浜バイオ）',
+                    },
+                ]
+            },
+            {
+                category: 'tech-society-company',
+                title: '科学技術と社会のつながり（企業）',
+                booths: [
+                    {
+                        number: '⑧',
+                        title: '科学でつながるコミュニティサイト',
+                        description: '「co-Lab BRAINS」と科学を学べるメディアサイト「Lab BRAINS」を紹介します。',
+                        time: '20分',
+                        organization: 'アズワン株式会社',
+                    },
+                    {
+                        number: '⑨',
+                        title: '科学技術の発展と地球貢献を実現する',
+                        description: '次世代研究者発掘育成の取り組み「サイエンスキャッスル」の紹介とプチメンタリング体験を行います。',
+                        time: '20分',
+                        organization: '株式会社リバネス',
+                    },
+                ]
+            }
+        ];
+
+        return (
+            <div className="booth-container">
+                {boothData.map((category, categoryIndex) => (
+                    <div key={categoryIndex} className="booth-category">
+                        <h2 className="category-header">{category.title}</h2>
+                        <div className="booth-grid">
+                            {category.booths.map((booth, boothIndex) => (
+                                <BoothCard 
+                                    key={boothIndex} 
+                                    {...booth} 
+                                    category={category.category}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
+    };
+
+    ReactDOM.render(<BoothDisplay />, document.getElementById('booth-display'));
+    </script>
+</body>
+</html>
